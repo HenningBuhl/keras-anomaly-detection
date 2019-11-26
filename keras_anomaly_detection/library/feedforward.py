@@ -57,8 +57,8 @@ class FeedForwardAutoEncoder(object):
     def get_config_file_path(model_dir_path):
         return os.path.join(model_dir_path, FeedForwardAutoEncoder.model_name + '-config.npy')
 
-    def fit(self, data, model_dir_path, nb_epoch=None, batch_size=None, test_size=None, random_state=None,
-            estimated_negative_sample_ratio=None):
+    def fit(self, data, model_dir_path, batch_size=None, epochs=None, validation_split=0.1, metric='mean_absolute_error',
+            estimated_negative_sample_ratio=0.9, test_size=None, random_state=None):
         if test_size is None:
             test_size = 0.2
         if random_state is None:
