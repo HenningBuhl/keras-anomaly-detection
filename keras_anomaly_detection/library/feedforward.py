@@ -63,8 +63,8 @@ class FeedForwardAutoEncoder(object):
             test_size = 0.2
         if random_state is None:
             random_state = 42
-        if nb_epoch is None:
-            nb_epoch = 100
+        if epochs is None:
+            epochs = 100
         if batch_size is None:
             batch_size = 32
         if estimated_negative_sample_ratio is None:
@@ -82,7 +82,7 @@ class FeedForwardAutoEncoder(object):
         self.model = self.create_model(self.input_dim)
         open(architecture_file_path, 'w').write(self.model.to_json())
         history = self.model.fit(X_train, X_train,
-                                 epochs=nb_epoch,
+                                 epochs=epochs,
                                  batch_size=batch_size,
                                  shuffle=True,
                                  validation_data=(X_test, X_test),
